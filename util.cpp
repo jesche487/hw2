@@ -15,16 +15,26 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
+    rawWords = convToLower(rawWords);
 
+    set<string> keywordset;
+    string temp = "";
 
-
-
-
-
-
-
-
-
+    //iterate through every character in rawWords, adding to temporary string temp
+    //if the for loop encounters any punctuation or a space, it will also check
+    //to see if the temp string length is greater than or equal to 2
+    //if it is, it is added as a keyword and temp is reset
+    for(char c : rawWords) {
+        if((ispunct(c) || c == ' ') && temp.length >= 2) {
+            keywordset.insert(temp);
+            temp = "";
+        }
+        else {
+            temp += c;
+        }
+    }
+    
+    return keywordset;
 }
 
 /**************************************************
