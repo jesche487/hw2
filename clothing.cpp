@@ -9,8 +9,8 @@ Clothing::Clothing(const std::string name, double price, int qty,
     brand_ (brand)
 {
   //automatically parses the keywords for this product during construction
-  auto temp = parseStringToWords(name);
-  auto temp2 = parseStringToWords(brand);
+  std::set<std::string> temp = parseStringToWords(name);
+  std::set<std::string> temp2 = parseStringToWords(brand);
   keyword_ = setUnion(temp, temp2);
 }
 
@@ -25,8 +25,9 @@ std::set<std::string> Clothing::keywords() const {
 
 std::string Clothing::displayString() const {
   std::ostringstream ss;
-  ss << category_ << " " << name_ << " " << price_ << " " 
-     << qty_ << " " << size_ << " " << brand_;
+  ss << name_ << "\n"
+     <<"Size: " << size_ << " Brand: " << brand_ << "\n"
+     << price_ << " " << qty_ << " left." << "\n";
 
   return ss.str();
 }
