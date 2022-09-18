@@ -16,6 +16,7 @@ std::string convToLower(std::string src)
 std::set<std::string> parseStringToWords(string rawWords)
 {
     rawWords = convToLower(rawWords);
+    rawWords += ' ';
 
     set<string> keywordset;
     string temp = "";
@@ -25,8 +26,10 @@ std::set<std::string> parseStringToWords(string rawWords)
     //to see if the temp string length is greater than or equal to 2
     //if it is, it is added as a keyword and temp is reset
     for(char c : rawWords) {
-        if((ispunct(c) || c == ' ') && temp.length >= 2) {
-            keywordset.insert(temp);
+        if(ispunct(c) || c == ' ') {
+            if(temp.length() >= 2) {
+                keywordset.insert(temp);
+            }
             temp = "";
         }
         else {

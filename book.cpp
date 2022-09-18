@@ -9,8 +9,8 @@ Book::Book(const std::string name, double price, int qty,
     ISBN_ (ISBN)
 {
   //automatically parses the keywords for this product during construction
-  auto temp = parseStringToWords(name);
-  auto temp2 = parseStringToWords(author);
+  std::set<std::string> temp = parseStringToWords(name);
+  std::set<std::string> temp2 = parseStringToWords(author);
   keyword_ = setUnion(temp, temp2);
   keyword_.insert(ISBN);
 }
@@ -26,9 +26,10 @@ std::set<std::string> Book::keywords() const {
 
 std::string Book::displayString() const {
   std::ostringstream ss;
-  ss << category_ << " " << name_ << " " << price_ << " " 
-     << qty_ << " " << author_ << " " << ISBN_;
-
+  ss << name_ << "\n"
+     <<"Author: " << author_ << " ISBN: " << ISBN_ << "\n"
+     << price_ << " " << qty_ << " left." << "\n";
+     
   return ss.str();
 }
  

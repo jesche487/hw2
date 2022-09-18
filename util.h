@@ -17,7 +17,7 @@ std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
 
   //iterator through s1 elements, if it exists in s2, insert into return set
   //complexity: n log(n)
-  for(const auto& elem : s1) {
+  for(const T& elem : s1) {
     if(s2.count(elem)) {
         returnset.insert(elem);
     }
@@ -34,7 +34,7 @@ std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
   //elements are unique
   //complexity: n log(n)
   returnset = s1;
-  for(const auto&elem : s2) {
+  for(const T& elem : s2) {
     returnset.insert(elem);
   }
 

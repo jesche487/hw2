@@ -9,8 +9,8 @@ Movie::Movie(const std::string name, double price, int qty,
     rating_ (rating)
 {
   //automatically parses the keywords for this product during construction
-  auto temp = parseStringToWords(name);
-  auto temp2 = parseStringToWords(genre);
+  std::set<std::string> temp = parseStringToWords(name);
+  std::set<std::string> temp2 = parseStringToWords(genre);
   keyword_ = setUnion(temp, temp2);
 }
 
@@ -25,8 +25,9 @@ std::set<std::string> Movie::keywords() const {
 
 std::string Movie::displayString() const {
   std::ostringstream ss;
-  ss << category_ << " " << name_ << " " << price_ << " " 
-     << qty_ << " " << genre_ << " " << rating_;
+  ss << name_ << "\n"
+     <<"Genre: " << genre_ << " Rating: " << rating_ << "\n"
+     << price_ << " " << qty_ << " left." << "\n";
 
   return ss.str();
 }
