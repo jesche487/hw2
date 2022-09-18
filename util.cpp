@@ -16,6 +16,7 @@ std::string convToLower(std::string src)
 std::set<std::string> parseStringToWords(string rawWords)
 {
     rawWords = convToLower(rawWords);
+    rawWords += ' ';
 
     set<string> keywordset;
     string temp = "";
