@@ -114,7 +114,7 @@ void MyDataStore::dump(std::ostream& ofile) {
   for(User* u : allusers) {
     u->dump(ofile);
   }
-  ofile << "</user>" << std::endl;
+  ofile << "</users>" << std::endl;
 }
 
 void MyDataStore::addUserProduct(std::string username, int index) {
@@ -140,8 +140,11 @@ void MyDataStore::viewCart(std::string username) {
   }
 
   //displays user's cart
+  int counter = 1;
   for(Product* p : carts_[username]) {
+    std::cout <<"Item " << counter << std::endl;
     std::cout << p->displayString() << std::endl;
+    counter++;
   }
 }
 

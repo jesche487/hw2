@@ -1,3 +1,6 @@
 .clang-format
 .clang-tidy
 *.o
+amazon
+hw2_tests.tar.gz
+hw2_tests/
